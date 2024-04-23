@@ -36,10 +36,38 @@ class MyFirstWidget extends StatelessWidget {
       ),
 
       drawer: Drawer(
-        child: Container(
-          color: Colors.blueAccent,
-          child: const Center(child: Text ('Drawer Button'),),
-        ),
+        child:SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment:  CrossAxisAlignment.stretch,
+          children: [
+            Material(
+              color:Colors.blueGrey,
+              child: InkWell(
+                child: Container(
+                  padding: EdgeInsets.only(
+                    top:MediaQuery.of(context).padding.top, bottom: 24
+                  ),
+                  child:const Column(
+                    children: [
+                      CircleAvatar(
+                        radius: 55,
+                      backgroundImage: AssetImage('assets/Breadog.jpg'),
+                      ),
+                      SizedBox(
+                        height: 12,
+                      ),
+                      Text('Bread Dog', style: TextStyle(
+                        fontSize: 28,
+                        color: Colors.white
+                      ), )
+                      ],
+
+                  )
+                ),
+              ),
+            )
+          ],),
+        )
       ),
       floatingActionButton: FloatingActionButton(onPressed: () {
         print('Jelou Print');
