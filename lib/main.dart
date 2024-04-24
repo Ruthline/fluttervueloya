@@ -40,32 +40,8 @@ class MyFirstWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment:  CrossAxisAlignment.stretch,
           children: [
-            Material(
-              color:Colors.blueGrey,
-              child: InkWell(
-                child: Container(
-                  padding: EdgeInsets.only(
-                    top:MediaQuery.of(context).padding.top, bottom: 24
-                  ),
-                  child:const Column(
-                    children: [
-                      CircleAvatar(
-                        radius: 55,
-                      backgroundImage: AssetImage('assets/Breadog.jpg'),
-                      ),
-                      SizedBox(
-                        height: 12,
-                      ),
-                      Text('Bread Dog', style: TextStyle(
-                        fontSize: 28,
-                        color: Colors.white
-                      ), )
-                      ],
-
-                  )
-                ),
-              ),
-            )
+            _headerDrawer(context),
+            _menuDrawer(context), 
           ],),
         )
       ),
@@ -96,6 +72,73 @@ class MyFirstWidget extends StatelessWidget {
             ),
         )
       ),
+    );
+  }
+
+  Material _headerDrawer(BuildContext context) {
+    return Material(
+            color:Colors.blueGrey,
+            child: InkWell(
+              child: Container(
+                padding: EdgeInsets.only(
+                  top:MediaQuery.of(context).padding.top, bottom: 24
+                ),
+                child:const Column(
+                  children: [
+                    CircleAvatar(
+                      radius: 70,
+                    backgroundImage: AssetImage('assets/Breadog.jpg'),
+                    ),
+                    SizedBox(
+                      height: 12,
+                    ),
+                    Text('Bread Dog', style: TextStyle(
+                      fontSize: 28,
+                      color: Colors.white
+                    ), )
+                    ],
+
+                )
+              ),
+            ),
+          );
+  }
+  
+  Widget _menuDrawer(BuildContext context) {
+    return Column(children: [
+      ListTile(
+        leading: const Icon(Icons.house),
+        title: const Text('Inicio'),
+        onTap: () {},
+      ),
+      ListTile(
+        leading: const Icon(Icons.airplane_ticket),
+        title: const Text('Reservas'),
+        onTap: () {},
+      ),
+      ListTile(
+        leading: const Icon(Icons.price_change),
+        title: const Text('Descuento en vuelos'),
+        onTap: () {},
+      ),
+      
+      ListTile(
+        leading: const Icon(Icons.travel_explore),
+        title: const Text('Lugares de interes'),
+        onTap: () {},
+      ),
+      Divider(color: Colors.grey),
+      ListTile(
+        leading: const Icon(Icons.handshake),
+        title: const Text('Nosotros'),
+        onTap: () {},
+      ),
+      ListTile(
+        leading: const Icon(Icons.call),
+        title: const Text('Contactanos'),
+        onTap: () {},
+      ),
+    ],
     );
   }
 }
