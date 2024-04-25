@@ -24,55 +24,67 @@ class MyFirstWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {//build es el encargado de mostrar widgets, ya sea por metodo o por clase, etc.
+    return _drawerWidget(context);
+  }
+
+  Scaffold _drawerWidget(BuildContext context) {
+    return _bodyWidget(context);
+  }
+
+  Scaffold _bodyWidget(BuildContext context) {
+    return _floatingButtonWidget(context);
+  }
+
+  Scaffold _floatingButtonWidget(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
-        title: const Text ('VueloYA'),
-        actions: const [
-          Padding(padding: EdgeInsets.all(5), child: Icon(Icons.person),),
-          Padding(padding: EdgeInsets.only(right: 20), child: Icon(Icons.login),)
+appBar: AppBar(
+  backgroundColor: Colors.blueAccent,
+  title: const Text ('VueloYA'),
+  actions: const [
+    Padding(padding: EdgeInsets.all(5), child: Icon(Icons.person),),
+    Padding(padding: EdgeInsets.only(right: 20), child: Icon(Icons.login),)
 
-          ]
-      ),
+    ]
+),
 
-      drawer: Drawer(
-        child:SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment:  CrossAxisAlignment.stretch,
-          children: [
-            _headerDrawer(context),
-            _menuDrawer(context), 
-          ],),
-        )
-      ),
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        print('Jelou Print');
-      }, child: const Icon(Icons.call)),
-      body: Center(
-        child:AspectRatio(
-          aspectRatio: 1.0,
+drawer: Drawer(
+  child:SingleChildScrollView(
+    child: Column(
+      crossAxisAlignment:  CrossAxisAlignment.stretch,
+    children: [
+      _headerDrawer(context),
+      _menuDrawer(context), 
+    ],),
+  )
+),
+
+floatingActionButton: FloatingActionButton(onPressed: () {
+}, child: const Icon(Icons.call)),
+body: Center(
+  child:AspectRatio(
+    aspectRatio: 1.0,
+    child: Container(
+    color: Colors.pink,
+    child: Padding(
+      padding: const EdgeInsets.all(40),
+      child: Container(
+        color: Colors.lightBlue,
+        child: Padding(
+          padding: const EdgeInsets.all(50),
           child: Container(
-          color: Colors.pink,
-          child: Padding(
-            padding: const EdgeInsets.all(40),
-            child: Container(
-              color: Colors.lightBlue,
-              child: Padding(
-                padding: const EdgeInsets.all(50),
-                child: Container(
-                  color: Colors.lightGreen,
-                  child:Padding(
-                    padding: const EdgeInsets.only(top: 255, bottom:255, left: 40, right: 40), child: Container(
-                      color: Colors.amber,
-                      ),
-                  ),
-                )),
-              ),
+            color: Colors.lightGreen,
+            child:Padding(
+              padding: const EdgeInsets.only(top: 255, bottom:255, left: 40, right: 40), child: Container(
+                color: Colors.amber,
+                ),
             ),
-            ),
-        )
+          )),
+        ),
       ),
-    );
+      ),
+  )
+),
+);
   }
 
   Material _headerDrawer(BuildContext context) {
@@ -127,7 +139,7 @@ class MyFirstWidget extends StatelessWidget {
         title: const Text('Lugares de interes'),
         onTap: () {},
       ),
-      Divider(color: Colors.grey),
+      const Divider(color: Colors.grey),
       ListTile(
         leading: const Icon(Icons.handshake),
         title: const Text('Nosotros'),
