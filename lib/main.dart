@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart'; // cosas de dart
+import 'dart:math' as Math;
 
 //metodo principal
 void main(){
@@ -60,31 +61,59 @@ drawer: Drawer(
 
 floatingActionButton: FloatingActionButton(onPressed: () {
 }, child: const Icon(Icons.call)),
-body: Center(
-  child:AspectRatio(
-    aspectRatio: 1.0,
-    child: Container(
-    color: Colors.pink,
-    child: Padding(
-      padding: const EdgeInsets.all(40),
-      child: Container(
-        color: Colors.lightBlue,
-        child: Padding(
-          padding: const EdgeInsets.all(50),
-          child: Container(
-            color: Colors.lightGreen,
-            child:Padding(
-              padding: const EdgeInsets.only(top: 255, bottom:255, left: 40, right: 40), child: Container(
-                color: Colors.amber,
-                ),
-            ),
-          )),
+body: _boddyWidget(),
+);
+  }
+
+  Center _boddyWidget() {
+    return Center(
+child:AspectRatio(
+  aspectRatio: 1.0,
+  child: Container(
+    decoration: const BoxDecoration(color: Color.fromARGB(255, 206, 215, 206)),
+    foregroundDecoration: const BoxDecoration(
+      backgroundBlendMode: BlendMode.colorBurn,
+      gradient: LinearGradient(
+        begin: Alignment.center,
+        end: Alignment.bottomCenter,
+        colors:[
+          Color.fromARGB(170, 118, 117, 124),
+          Color.fromARGB(0, 141, 115, 115),
+          Color.fromARGB(170, 180, 174, 187),
+        ]
+              )
+    ),
+    child: Center(
+      child: Transform.rotate(
+        angle: 180/Math.pi,
+        child: Container(
+          width:250,
+          height: 250, 
+          decoration: BoxDecoration(color: Colors.purple,boxShadow: [
+            BoxShadow(color: Colors.deepPurple.withBlue(120), spreadRadius: 4,blurRadius: 15,offset: Offset.fromDirection(1.0, 30))
+          ],
+          borderRadius: const BorderRadius.all(Radius.circular(20))),
+          child: Padding(
+            padding: const EdgeInsets.all(50),
+            child: _buildCircleContainer(),
+          ),
         ),
       ),
-      ),
-  )
-),
-);
+    ),
+
+)),
+    );
+  }
+
+  Widget _buildCircleContainer(){
+    return Container(
+      decoration:const BoxDecoration(
+        shape:BoxShape.circle,gradient: RadialGradient(colors:[
+          Colors.lightBlueAccent, Colors.blueAccent
+        ],
+        center: Alignment(-0.3, -0.5)),
+        boxShadow: [BoxShadow(blurRadius: 20)]),
+    );
   }
 
   Material _headerDrawer(BuildContext context) {
